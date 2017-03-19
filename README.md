@@ -1,2 +1,2 @@
-# ETC_Modes_Dev
+# ETC_Modes
 Modes for the ETC
