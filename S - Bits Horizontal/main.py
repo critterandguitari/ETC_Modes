@@ -39,7 +39,7 @@ def draw(screen, etc):
        
         x = xpos[i] + linelength
         y = (i * linewidth) + int(linewidth/2)- 1
-        pygame.draw.line(screen, color, (xpos[i]+(auDio / 4), y), (x+auDio, y), linewidth)
+        pygame.draw.line(screen, color, (xpos[i]+(auDio / 4), y), (x+auDio, y + int(etc.knob3 * 100 - 50)), linewidth)
     
             
        

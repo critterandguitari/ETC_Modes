@@ -18,6 +18,8 @@ def draw(screen, etc):
         lineseg(screen, etc, i)
     for i in range(0, 100) :
         ballseg(screen, etc, i)
+    for i in range(0, int(etc.knob3 * 100)):
+        pygame.draw.rect(screen, etc.color_picker(), [random.randrange(0,1280),random.randrange(0,720),5,5], 0)
     
 
 def lineseg(screen, etc, i):
@@ -28,7 +30,7 @@ def lineseg(screen, etc, i):
     x = i * 10
     xoffset = (1280 - (99*10)) // 2
     color = etc.color_picker()
-    colorList = ( color[0]*(i*.01), color[1]*(i*.01), color[2]*(i*.01) )
+    colorList = color# ( color[0]*((99-i)*.01), color[1], color[2] )
     first_point = [(0*10)+xoffset, (screen.get_height() // 2) + (etc.audio_in[0] / 35)]
     
     if i == 0 : 
@@ -46,8 +48,8 @@ def ballseg(screen, etc, i):
     y1 = (screen.get_height() // 2) + (etc.audio_in[i] / 90)
     x = i * 10
     xoffset = (1280 - (99*10)) // 2
-    color = etc.color_picker()
-    colorList = ( color[0]*((99-i)*.01), color[1], color[2] )
+    color = color #etc.color_picker()
+    #colorList = ( color[0]*((99-i)*.01), color[1], color[2] )
     
     pygame.draw.circle(screen,colorList,(x + xoffset, y1),ballwidth, 0)
     

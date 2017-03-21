@@ -15,18 +15,20 @@ def seg(screen, etc, i) :
     x0 = 640
     x1 = 640 + (etc.audio_in[i] / 64)
     y = i * 11
-    bw = abs((etc.audio_in[i] / 128))
-    color = (bw, bw, bw)
+    audio_lev = float(abs((etc.audio_in[i] / 128))) / 256
+    color = etc.bg_color
+    color_inverse = (255 - color[0], 255 - color [1], 255 - color[2])
     
-    bw2 = 255 - abs((etc.audio_in[i] / 128))
-    color2 = (bw2, bw2, bw2)
+    deltaR = color[0] - color_inverse[0]
+    deltaG = color[1] - color_inverse[1]
+    deltaB = color[2] - color_inverse[2]
+    
+    color = (int(color[0] + audio_lev * deltaR) & 0xFF, int(color[1] + audio_lev * deltaG) & 0xFF, int(color[2] + audio_lev * deltaB) & 0xFF)
     
     circlesize = int(etc.knob1*55)
-    circlesize2 = int(etc.knob3*55)
+
     circlelinewidth = int(etc.knob2*circlesize) 
-    circlelinewidth2 = int(etc.knob4*circlesize2)
     
-    #pygame.draw.circle(screen,color,(x1, y),circlesize, circlelinewidth)
-    pygame.draw.circle(screen,color,(x1, y),circlesize, circlelinewidth)
-    pygame.draw.circle(screen,color2,(x1, y),circlesize2, circlelinewidth2)
+    pygame.draw.circle(screen,color,(x1, y),circlesize, 0)
+
 

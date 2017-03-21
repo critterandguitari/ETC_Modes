@@ -34,10 +34,10 @@ def draw(screen, etc):
 
 def seg(screen, etc, i):
     global last_point, images, owen
-    xoffset = 100
+    xoffset = 40
     y0 = screen.get_height() // 2#random.randrange(0,1920)
-    y1 = (screen.get_height() // 2) + (etc.audio_in[i] / 35)#random.randrange(0,1920)
-    x = i * 10#random.randrange(0,1080)
+    y1 = (screen.get_height() // 2) + (etc.audio_in[i] / 90)#random.randrange(0,1920)
+    x = i * 12#random.randrange(0,1080)
     color = etc.color_picker() #on knob4
 
     last_point = [(int(etc.knob1*1280)), (int(etc.knob2*720))]

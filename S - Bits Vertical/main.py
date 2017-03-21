@@ -37,6 +37,6 @@ def draw(screen, etc):
         auDio = int(etc.audio_in[j] / 180)
         y = ypos[j] + linelength
         x = (j * linewidth) + (linewidth/2)- 1
-        pygame.draw.line(screen, color, (x, ypos[j]+(auDio / 4)), (x, y+auDio), linewidth)
+        pygame.draw.line(screen, color, (x, ypos[j]+(auDio / 4)), (x+ int(etc.knob3 * 100 - 50), y+auDio), linewidth)
     
     #pygame.draw.line(screen, (255,0,0), (320, 40), (960, 40), 1)
