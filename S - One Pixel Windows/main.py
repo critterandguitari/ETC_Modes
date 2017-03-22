@@ -1,46 +1,48 @@
 import os
 import pygame
 
-
-trigger = False
 x = 0
 y = 0
-
+spacex = 61
+xpos = 30
 
 def setup(screen, etc):
     pass
 
 def draw(screen, etc):
+    global  x, y, xpos, spacex
     
-    global  trigger, x, y
+    aberration = int(etc.knob1 * 15)
+    ypos = int(etc.knob2 * 715)
+    spread = int(etc.knob3*45)
+    color = int(etc.knob4*254)+1
     
-   
-    spacex = 64
-    spacey = 12
-    
-   
-     
+    #red
     for i in range(0,21):
         
         for j in range(0,21):
-            x = i*spacex+2 
-            y = j*spacey+182 
+            x = i*spacex+(aberration*2)+xpos 
+            y = j*spread+(aberration*2)+ypos 
             
-            pygame.draw.line(screen, (255,0,0), (x, y),(x, y), int(abs(etc.audio_in[j]/140)))
+            pygame.draw.line(screen, (color,0,0), (x, y),(x, y), int(abs(etc.audio_in[j]/140)))
+    
+    #green
     for i in range(0,21):
         
         for j in range(0,21):
-            x = i*spacex-3 
-            y = j*spacey+181 
+            x = i*spacex-(aberration*3)+xpos 
+            y = j*spread+(aberration)+ypos 
             
-            pygame.draw.line(screen, (0,255,0), (x, y),(x, y), int(abs(etc.audio_in[j+25]/140)))
+            pygame.draw.line(screen, (0,color,0), (x, y),(x, y), int(abs(etc.audio_in[j+25]/140)))
+    
+    #blue
     for i in range(0,21):
         
         for j in range(0,21):
-            x = i*spacex+1 
-            y = j*spacey+180 
+            x = i*spacex+(aberration)+xpos 
+            y = j*spread+ypos   
             
-            pygame.draw.line(screen, (0,0,255), (x, y),(x, y), int(abs(etc.audio_in[j+50]/140)))
+            pygame.draw.line(screen, (0,0,color), (x, y),(x, y), int(abs(etc.audio_in[j+50]/140)))
            
    
     
